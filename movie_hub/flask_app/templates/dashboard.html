@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Bootstrap Example</title>
+<!-- load Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- Optional JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="fluid-container">
+        <div class="row">
+            <div class="col-12">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div>
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8" style="background-color:royalblue;">
+                <h1>Movie Hub</h1></br>
+                <h2>Welcome, {{user.username}}</h2>
+            </div>
+            <div class="col-3" style="background-color:royalblue;">
+                profile image/link here
+            </div>
+            <div class="col-1" style="background-color:royalblue;">
+                <a href="/?????" class="btn btn-primary" style="background-color:midnightblue; border-radius: 8px;">Add a New List</a></br>
+                <a href="/?????" class="btn btn-primary" style="background-color:midnightblue; border-radius: 8px;">Logout</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>List name here</h3>
+                {% for ????? in ????? %}
+                    {% if ?????.owner.id == user.id %}
+                        ?????
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>List name here</h3>
+                {% for ????? in ????? %}
+                    {% if ?????.owner.id == user.id %}
+                        ?????
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>List name here</h3>
+                {% for ????? in ????? %}
+                    {% if ?????.owner.id == user.id %}
+                        ?????
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
