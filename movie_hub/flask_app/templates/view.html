@@ -1,87 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- load Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<!-- Optional JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<!-- Style.css -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-<!-- Michaels Style link for personal dev -->
-<link rel="stylesheet" href="/Users/michaelgoedel/Desktop/codingDojo/P&A/groupProject/Group-Project/movie_hub/flask_app/static/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- load Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>View</title>
 </head>
+
 <body>
-    <div class="fluid-container mx-5 py-3">
-        <div class="row align-items-center">
-            <div class="col-10";>
-                <h1>Movie Hub</h1>
-                <!-- Jinja: user['username'] -->
-                <b>Welcome, {{user['username']}}</b>
-                <h4>
-                    {{movie['title']}}
-                </h4>
-            </div>
-            <div class="col-2">
-                <div>
-                    <a class="text-decoration-none text-dark" href="">&lt; Dashboard</a>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex">
+
+            <div class="container-fluid d-flex">
+                <a class="navbar-brand" href="{{url_for('go_home')}}">Movie Hub</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{url_for('go_home')}}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' aria-current="page" href="{{url_for('log_and_reg')}}">Login</a>
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <a class="text-decoration-none text-dark" href="">&lt; Log-Out</a>
-                </div>
+
             </div>
+
         </div>
-        <div class="d-flex justify-content-around">
-            <!-- Left side -->
-            <div class="" style="width: 48%;">
-                <div class="testBorder poster-view-size shadow">
-                    <img src="" alt="Movie Poster">
-                </div>
-                <div>
-                    <div class="col-12 position-relative my-5">
-                        <div class="box testBorder p-3 comment-box shadow">
-                            <div class="overlay-text">
-                                <p>Comments</p>
-                            </div>
-                            <!-- Jinja: movies_on_list -->
-                            <!-- {% for comment in comments %} -->
-                                <div class="d-flex justify-content-between align-items-center mx-2 my-5">
-                                    <p>
-                                        <b>
-                                            <!-- Jinja: We will need to get the username from comment['user_id'] -->
-                                            {{user}}:
-                                        </b>
-                                        {{comment['comment']}}
-                                    </p>
-                                </div>
-                            <!-- {% endfor %} -->
-                        </div>
-                    </div>
+    </nav>
+    <div class="container">
+        <!-- Left side -->
+        <div class="view_full d-flex align-items-center">
+            <div class="poster_card mt-5">
+                <div class="poster_hero">
+                    <h3>{{movie.title}}</h3>
+                    <img class='poster_main' src="{{url_for('static',filename=movie.poster)}}" alt="Movie Poster">
+                    <div class="rating"><img class='rating_img' src="/static/star_ratings/Star_rating_5_of_5.png" alt="5 stars"></div>
                 </div>
             </div>
             <!-- Right side -->
-            <div class="" style="width: 48%;">
-                Rating: {{rating['rating']}}/5
-                <div class="row my-5">
-                    <div class="col-12 position-relative">
-                        <div class="box testBorder p-3 description-box shadow">
-                            <div class="overlay-text">
-                                <p>Description</p>
-                            </div>
-                            <div>
-                                <p>
-                                    {{movie['desc']}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="description">
+                <h5>description</h5>
+                <p>{{movie.plot}}</p>
             </div>
         </div>
+        
+    </div>
     </div>
 </body>
-</html>
 
+</html>

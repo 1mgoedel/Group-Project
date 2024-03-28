@@ -1,7 +1,6 @@
-*{
-    box-sizing: border-box;
+body{
+    background-color: antiquewhite;
 }
-
 .testBorder{
     border: 2px solid black;
 }
@@ -51,4 +50,43 @@
 .poster-view-size{
     width: 200px;
     height: 200px;
+}
+.navbar{
+    
+    background-color: black;
+    border-bottom: whitesmoke 1px solid;
+    
+}
+.top{
+    text-align: center;
+}
+.poster{
+    height: 300px;
+}
+.img_card{
+    flex: 0 1 calc(20% - 8px);
+    padding: 15px;
+}
+.poster_hero{
+    text-align: center;
+    margin: 0 auto;
+}
+.poster_main{
+    height: 700px;
+    margin: 0 auto;
+}
+.rating{
+    display: flex;
+    margin-top: 5px;
+}
+.rating_img{
+    margin: 0 auto;
+    height: 40px;
+}
+.view_full{
+    gap: 40px;
+}
+.flash{
+    text-align: center;
+    color: red;
 }

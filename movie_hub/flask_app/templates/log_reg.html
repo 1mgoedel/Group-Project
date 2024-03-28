@@ -7,13 +7,36 @@
 <title>Bootstrap Example</title>
 <!-- load Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <!-- Optional JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="fluid-container">
-        <div class="row">
+        
+        <nav class="navbar navbar-expand-lg">
+            <div class="container d-flex">
+    
+                <div class="container-fluid d-flex">
+                    <a class="navbar-brand" href="{{url_for('go_home')}}">Movie Hub</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{url_for('go_home')}}">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </nav>
+        <div class="flash row">
             <div class="col-12">
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -26,94 +49,77 @@
                 {% endwith%}
             </div>
         </div>
-        <div class="row">
-            <div class="col-5" style="background-color:royalblue;">
-                <h1>Movie Hub</h1>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-1">
+            
+                </div>
+                <div class="col-5">
+                    <h1>Register</h1>
+                </div>
+                <div class="col-6">
+                    <h1>Log-In</h1>
+                </div>
             </div>
+            
+            <div class="row">
+                <div class="col-1">
+                </div>
+                <form action="#" method="POST" class="col-1" style="background-color: lightgray;">
+                    <div class="form-group mt-3">
+                        <label for="username">Username:</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="confirm_password">Confirm Password:</label>
+                    </div>
+                </form>
+                <form action="{{url_for('register')}}" method="POST" class="col-4" style="background-color: lightgray;">
+                    <div class="form-group mt-3">
+                        <input type="text" name="username">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" name="email">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="password" name="password">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="password" name="confirm">
+                    </div>
+                    <div style="padding-top: 10px;">
+                        <button type="submit" class="btn btn-primary" style="background-color:lightseagreen; border-radius: 8px;">Submit</button>
+                    </div>
+                </form>
+                <form action="#" method="POST" class="col-1" style="background-color: lightgray;">
+                    <div class="form-group mt-3">
+                        <label for="username">Email:</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="password">Password:</label>
+                    </div>
+                </form>
+                <form action="{{url_for('login')}}" method="POST" class="col-4" style="background-color: lightgray;">
+                    <div class="form-group mt-3">
+                        <input type="text" name="username">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" name="password">
+                    </div>
+                    <div style="padding-top: 10px;">
+                        <button class="btn btn-primary" style="background-color: lightseagreen; border-radius: 8px;">Login</button>
+                    </div>
+                </form>
+                <div class="col-1">
+                </div>
+            </div>
+                </div>
         </div>
-        <div class="row">
-            <div class="col-1">
-                
-            </div>
-            <div class="col-5">
-                <h1>Register</h1>
-            </div>
-            <div class="col-6">
-                <h1>Log-In</h1>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-1">
-
-            </div>
-            <form action="/?????" method="POST" class="col-1" style="background-color: lightgray;">
-                <div class="form-group mt-3">
-                    <label for="first_name">First Name:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="last_name">Last Name:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="username">Username:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="email">Email:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="password">Password:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="confirm_password">Confirm Password:</label>
-                </div>
-            </form>
-            <form action="/?????" method="POST" class="col-4" style="background-color: lightgray;">
-                <div class="form-group mt-3">
-                    <input type="text" name="first_name">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="last_name">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="username">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="email">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="password">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="confirm_password">
-                </div>
-                <div style="padding-top: 10px;">
-                    <button class="btn btn-primary" style="background-color:lightseagreen; border-radius: 8px;">Submit</button>
-                </div>
-            </form>
-            <form action="/?????" method="POST" class="col-1" style="background-color: lightgray;">
-                <div class="form-group mt-3">
-                    <label for="username">Email:</label>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="password">Password:</label>
-                </div>
-            </form>
-            <form action="/?????" method="POST" class="col-4" style="background-color: lightgray;">
-                <div class="form-group mt-3">
-                    <input type="text" name="username">
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" name="password">
-                </div>
-                <div style="padding-top: 10px;">
-                    <button class="btn btn-primary" style="background-color: lightseagreen; border-radius: 8px;">Login</button>
-                </div>
-            </form>
-            <div class="col-1">
-
-            </div>
-        </div>
-    </div>
 </body>
 </html>
 
