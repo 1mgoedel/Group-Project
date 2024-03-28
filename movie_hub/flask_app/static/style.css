@@ -25,10 +25,30 @@
 
 .watch-list-box{
     max-height: 600px;
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+.comment-box{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.description-box{
+    height: 300px;
     overflow-y: auto;
 }
 
 #watched{
     width: 20px;
     height: 20px;
+}
+
+.search-bar{
+    width: 70%;
+}
+
+.poster-view-size{
+    width: 200px;
+    height: 200px;
 }
