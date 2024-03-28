@@ -1,76 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- <title>Watch List</title> -->
-<!-- load Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<!-- Optional JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<!-- Style.css -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-<!-- Michaels Style link for personal dev -->
-<link rel="stylesheet" href="/Users/michaelgoedel/Desktop/codingDojo/P&A/groupProject/Group-Project/movie_hub/flask_app/static/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <title>Watch List</title> -->
+    <!-- load Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>New List</title>
 </head>
+
 <body>
-    <div class="fluid-container mx-5 py-3">
-        <div class="row align-items-center">
-            <div class="col-10";>
-                <h1>Movie Hub</h1>
-                <!-- Jinja: user['username'] -->
-                <h4>Welcome, {{user['username']}}</h4>
-            </div>
-            <div class="col-2">
-                <div>
-                    <a class="text-decoration-none text-dark" href="">&lt; Dashboard</a>
-                </div>
-                <div>
-                    <a class="text-decoration-none text-dark" href="">&lt; Log-Out</a>
-                </div>
-            </div>
-        </div>
+    <div class="fluid-container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container d-flex">
 
-        <form class="my-4 d-flex justify-content-center" action="">
-            <div class="search-bar d-flex justify-content-around">
-                <label for="search">Search Movie</label>
-                <input class="shadow" type="text" name="search" id="search">
-                <input class="shadow" type="button" value="Add Movie">
-            </div>
-            </form>
-        <div class="row my-5">
-            <div class="col-12 position-relative">
-                <div class="box testBorder p-3 watch-list-box shadow">
-                    <div class="overlay-text">
-                        <p>Movies</p>
+                <div class="container-fluid d-flex">
+                    <a class="navbar-brand" href="{{url_for('go_home')}}">Movie Hub</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{url_for('go_home')}}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class='nav-link' aria-current="page" href="{{url_for('log_and_reg')}}">Logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class='nav-link' aria-current="page" href="{{url_for('dashboard')}}">Dashboard</a>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- Jinja: movies_on_list -->
-                    {% for movie in movies_on_list %}    <!--Need to take a look at this for loop-->
-                        <div class="d-flex justify-content-between align-items-center mx-5 my-5">
-                            <div class="picture testBorder shadow">
-                                <!-- Jinja: NOT SURE? PROBABLY A PATH TO MOVIE POSTER -->
-                                <img src="{{movie['poster']}}" alt="Movie Poster"></img>
-                            </div>
-                            <div>
-                                <h5>
-                                    <!-- Jinja: movie['title'] -->
-                                    {{movie['title']}}
-                                </h5>
-                            </div>
-                            <div>
-                                <p>
-                                    <!-- Jinja: movie['desc'] -->
-                                    {{movie['desc']}}
-                                </p>
-                            </div>
-                        </div>
-                    {% endfor %}
+
+                </div>
+
+            </div>
+        </nav>
+        <div class="container mt-5">
+
+
+            <form class="my-4 d-flex justify-content-center" action="{{url_for('add_movie')}}" id="add_movie"
+                method="post">
+                <div class="search-bar d-flex justify-content-around">
+                    <label for="search">Add Movie to database</label>
+                    <input type="hidden" value="{{list.id}}" name="list_id">
+                    <input class="shadow" type="text" name="title" id="title">
+                    <input class="shadow" type="submit" value="Add Movie">
+                </div>
+            </form>
+            <div class="row my-5">
+                <div class="col-12 position-relative">
+                    <div class="box testBorder p-3 watch-list-box shadow">
+                        
+                            <h2 style="text-align: center;">{{list.name}}</h2>
+                            <form action="{{url_for('add_movie_to_list')}}" method="post" id="add_to_list">
+                                <div class="row g-3 mt-3 justify-content-around">
+                                    <div class="col-9">
+                                        <input type="hidden" value="{{user.id}}" name="user_id">
+                                        <input type="hidden" value="{{list.id}}" name="list_id">
+                                        <select name="movie_id" id="title" class="form-control">
+                                            {%for movie in all_movies%}
+                                            <option value="{{movie.id}}">{{movie.title}}</option>
+                                            {%endfor%}
+                                        </select>
+                                    </div>
+                                    <div class="col-auto"><button class="btn btn-primary form-control" form="add_to_list">Add to List</button></div>
+                                </div>
+                            </form>
+                            <table class="table movie_list" style="vertical-align: middle;">
+                                <tr>
+                                    <th>Poster</th>
+                                    <th>Title</th>
+                                    <th>Actions</th>
+                                </tr>
+                                {%for movie in movies_on_list%}
+                                <tr> 
+                                    <td><img class="list_img" src="{{url_for('static',filename=movie.poster)}}" alt="{{movie.title}}"></td>
+                                    <td class="movie_title">{{movie.title}}</td>
+                                    <td>
+                                        <form action="{{url_for('delete_movie_from_list')}}" method="post"><input type="hidden" value="{{movie.id}}" name="movie_id"><input type="hidden" value="{{list.id}}" name="list_id"><button class="btn btn-danger" type="submit">DELETE</button></form>
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
-</html>
 
+</html>
