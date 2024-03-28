@@ -53,7 +53,7 @@ class User:
     def register(cls,data):
         query = '''INSERT INTO users (username,email,password,created_at,updated_at)
                     VALUES (%(username)s,%(email)s,%(password)s,now(),now());'''
-        results = connectToMySQL('movie_hub_schema_schema').query_db(query,data)
+        results = connectToMySQL('movie_hub_schema').query_db(query,data)
         return results
     @classmethod
     def login(cls,data):
