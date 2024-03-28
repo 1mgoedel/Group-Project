@@ -57,7 +57,7 @@ class User:
         return results
     @classmethod
     def login(cls,data):
-        user = cls.get_user_by_username(data['username'])
+        user = cls.get_user_by_email(data['email'])
         if user and bcrypt.checkpw(data['password'].encode('utf-8'),user.password.encode('utf-8')):
             return user
         else:

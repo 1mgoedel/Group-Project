@@ -17,7 +17,7 @@ def register():
     new_user = User.register(data)
     session['user_id'] = new_user
     session['is_logged'] = True
-    return redirect('/dashboard')
+    return redirect('/splash')
 
 @app.route("/user")
 def user_profile():
@@ -30,15 +30,23 @@ def user_profile():
 
 @app.route("/login", methods=["POST"])
 def login():
-    user = User.get_user_by_email(request.form)
-    if not user:
-        flash ("Invalid Email/Password", "login")
-        return redirect ("/log_and_reg")
-    if not bcrypt.check_password_hash(user.password, request.form["password"]):
-        flash("Invalid Email/Password", "login")
-        return redirect ("/log_and_reg")
-    session["user_id"] = user.id
-    return redirect("/dashboard")
+    email = request.form['email']
+    password = request.form['password']
+
+    data = {
+        'email': email,
+        'password': password
+    }
+
+    user = User.login(data)
+
+    if user:
+        session['user_id'] = user.id
+        session['is_logged'] = True
+        return redirect('/dashboard')
+    else:
+        return redirect('/log_and_reg')
+    
 
 @app.route("/logout", methods=["POST"])
 def logout():
