@@ -23,8 +23,6 @@ body{
 }
 
 .watch-list-box{
-    max-height: 600px;
-    min-height: 300px;
     overflow-y: auto;
 }
 
@@ -89,4 +87,16 @@ body{
 .flash{
     text-align: center;
     color: red;
+}
+.user_list_item{
+    border: black solid 1px;
+}
+.dash{
+    text-align: center;
+}
+.list_img{
+    height: 200px;
+}
+.movie_title{
+    font-size: 2rem;
 }
