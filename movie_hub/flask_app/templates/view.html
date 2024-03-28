@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- load Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- Optional JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<!-- Style.css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<!-- Michaels Style link for personal dev -->
+<link rel="stylesheet" href="/Users/michaelgoedel/Desktop/codingDojo/P&A/groupProject/Group-Project/movie_hub/flask_app/static/style.css">
+    <title>View</title>
+</head>
+<body>
+    <div class="fluid-container mx-5 py-3">
+        <div class="row align-items-center">
+            <div class="col-10";>
+                <h1>Movie Hub</h1>
+                <!-- Jinja: user['username'] -->
+                <b>Welcome, {{user['username']}}</b>
+                <h4>
+                    {{movie['title']}}
+                </h4>
+            </div>
+            <div class="col-2">
+                <div>
+                    <a class="text-decoration-none text-dark" href="">&lt; Dashboard</a>
+                </div>
+                <div>
+                    <a class="text-decoration-none text-dark" href="">&lt; Log-Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around">
+            <!-- Left side -->
+            <div class="" style="width: 48%;">
+                <div class="testBorder poster-view-size shadow">
+                    <img src="" alt="Movie Poster">
+                </div>
+                <div>
+                    <div class="col-12 position-relative my-5">
+                        <div class="box testBorder p-3 comment-box shadow">
+                            <div class="overlay-text">
+                                <p>Comments</p>
+                            </div>
+                            <!-- Jinja: movies_on_list -->
+                            <!-- {% for comment in comments %} -->
+                                <div class="d-flex justify-content-between align-items-center mx-2 my-5">
+                                    <p>
+                                        <b>
+                                            <!-- Jinja: We will need to get the username from comment['user_id'] -->
+                                            {{user}}:
+                                        </b>
+                                        {{comment['comment']}}
+                                    </p>
+                                </div>
+                            <!-- {% endfor %} -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side -->
+            <div class="" style="width: 48%;">
+                Rating: {{rating['rating']}}/5
+                <div class="row my-5">
+                    <div class="col-12 position-relative">
+                        <div class="box testBorder p-3 description-box shadow">
+                            <div class="overlay-text">
+                                <p>Description</p>
+                            </div>
+                            <div>
+                                <p>
+                                    {{movie['desc']}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
